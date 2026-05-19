@@ -40,7 +40,21 @@ export async function POST(request: Request) {
       )
     }
 
-    // Insert record in SQLite Database
+    // Angalia kama namba ya simu tayari imesajiliwa kwenye database
+    const existingRegistration = await db.registration.findUnique({
+      where: {
+        phoneNumber: phoneNumber.trim(),
+      },
+    })
+
+    if (existingRegistration) {
+      return NextResponse.json(
+        { error: 'Namba hii ya simu tayari imesajiliwa kwenye mfumo. Huwezi kujisajili mara mbili.' },
+        { status: 400 }
+      )
+    }
+
+    // Insert record in Database
     const newRegistration = await db.registration.create({
       data: {
         firstName: firstName.trim(),

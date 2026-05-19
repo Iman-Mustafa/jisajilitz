@@ -16,7 +16,7 @@ model Registration {
   id             String   @id @default(uuid())
   firstName      String
   lastName       String
-  phoneNumber    String
+  phoneNumber    String   @unique
   nextOfKin1Name  String
   nextOfKin1Phone String
   nextOfKin2Name  String
