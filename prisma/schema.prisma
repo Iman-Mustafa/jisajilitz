@@ -23,3 +23,9 @@ model Registration {
   nextOfKin2Phone String
   createdAt      DateTime @default(now())
 }
+
+model AdminSettings {
+  id           String  @id @default("singleton")
+  passwordHash String
+  isFirstLogin Boolean @default(true)
+}

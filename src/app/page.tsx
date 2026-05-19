@@ -71,8 +71,8 @@ export default function Home() {
           <div className="logo">
             <span style={{ fontSize: '1.8rem' }}>✦</span> Jisajili
           </div>
-          <Link href="/admin" className="btn btn-secondary">
-            Kazi ya Admin 🛡️
+          <Link href="/admin" className="btn btn-secondary" style={{ display: 'inline-flex', gap: '8px', alignItems: 'center' }}>
+            Ingia 🔒
           </Link>
         </div>
       </header>
@@ -96,7 +96,7 @@ export default function Home() {
                   Sajili Mwingine
                 </button>
                 <Link href="/admin" className="btn btn-secondary">
-                  Angalia Admin Panel
+                  Ingia Kwenye Panel
                 </Link>
               </div>
             </div>
