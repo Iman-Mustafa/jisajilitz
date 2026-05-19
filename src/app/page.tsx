@@ -8,8 +8,10 @@ export default function Home() {
     firstName: '',
     lastName: '',
     phoneNumber: '',
-    nextOfKinName: '',
-    nextOfKinPhone: '',
+    nextOfKin1Name: '',
+    nextOfKin1Phone: '',
+    nextOfKin2Name: '',
+    nextOfKin2Phone: '',
   })
 
   const [loading, setLoading] = useState(false)
@@ -49,8 +51,10 @@ export default function Home() {
         firstName: '',
         lastName: '',
         phoneNumber: '',
-        nextOfKinName: '',
-        nextOfKinPhone: '',
+        nextOfKin1Name: '',
+        nextOfKin1Phone: '',
+        nextOfKin2Name: '',
+        nextOfKin2Phone: '',
       })
     } catch (err: any) {
       setError(err.message || 'Kashindwa kuwasiliana na server.')
@@ -75,17 +79,17 @@ export default function Home() {
 
       {/* Main Form Area */}
       <main className="container" style={{ padding: '60px 24px', display: 'flex', justifyContent: 'center' }}>
-        <div style={{ width: '100%', maxWidth: '600px' }}>
+        <div style={{ width: '100%', maxWidth: '650px' }}>
           
           {success ? (
-            /* Success Screen Screen */
+            /* Success Screen overlay */
             <div className="card success-screen">
               <div className="success-icon">✓</div>
               <h2 className="text-gradient-green" style={{ fontSize: '1.8rem', fontWeight: 800 }}>
                 Usajili Umekamilika!
               </h2>
               <p className="text-muted" style={{ fontSize: '1.05rem', lineHeight: '1.6' }}>
-                Hongera sana! Taarifa zako zimepokelewa na zimehifadhiwa salama kwenye database yetu.
+                Hongera sana! Taarifa zako na za wasimamizi wako wawili zimepokelewa na zimehifadhiwa salama kwenye database.
               </p>
               <div style={{ marginTop: '16px', display: 'flex', gap: '12px' }}>
                 <button className="btn btn-primary" onClick={() => setSuccess(false)}>
@@ -103,7 +107,7 @@ export default function Home() {
                 <h1 className="text-gradient" style={{ fontSize: '2.2rem', fontWeight: 800, marginBottom: '8px' }}>
                   Fomu Ya Usajili
                 </h1>
-                <p className="text-muted">Jaza taarifa zako kwa usahihi hapa chini ili kujisajili.</p>
+                <p className="text-muted">Jaza taarifa zako pamoja na watu wawili wa karibu (Next of Kin) hapa chini.</p>
               </div>
 
               {error && (
@@ -175,17 +179,18 @@ export default function Home() {
 
                 <hr style={{ border: 'none', borderTop: '1px solid var(--border)', margin: '32px 0 24px 0' }} />
 
+                {/* Next of Kin 1 */}
                 <h3 className="text-gradient" style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                  2. Taarifa ya Mtu wa Karibu (Next of Kin)
+                  2. Mtu wa Karibu wa Kwanza (Next of Kin 1)
                 </h3>
 
                 <div className="form-group">
-                  <label htmlFor="nextOfKinName" className="form-label">Jina la Mtu wa Karibu</label>
+                  <label htmlFor="nextOfKin1Name" className="form-label">Jina la Mtu wa Karibu 1</label>
                   <input
                     type="text"
-                    id="nextOfKinName"
-                    name="nextOfKinName"
-                    value={formData.nextOfKinName}
+                    id="nextOfKin1Name"
+                    name="nextOfKin1Name"
+                    value={formData.nextOfKin1Name}
                     onChange={handleChange}
                     placeholder="Mfano: Ahmed Ibrahim"
                     className="form-input"
@@ -195,14 +200,51 @@ export default function Home() {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="nextOfKinPhone" className="form-label">Namba ya Simu ya Mtu wa Karibu</label>
+                  <label htmlFor="nextOfKin1Phone" className="form-label">Namba ya Simu ya Mtu wa Karibu 1</label>
                   <input
                     type="tel"
-                    id="nextOfKinPhone"
-                    name="nextOfKinPhone"
-                    value={formData.nextOfKinPhone}
+                    id="nextOfKin1Phone"
+                    name="nextOfKin1Phone"
+                    value={formData.nextOfKin1Phone}
                     onChange={handleChange}
                     placeholder="Mfano: 0687654321"
+                    className="form-input"
+                    required
+                    autoComplete="off"
+                  />
+                </div>
+
+                <hr style={{ border: 'none', borderTop: '1px solid var(--border)', margin: '32px 0 24px 0' }} />
+
+                {/* Next of Kin 2 */}
+                <h3 className="text-gradient" style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  3. Mtu wa Karibu wa Pili (Next of Kin 2)
+                </h3>
+
+                <div className="form-group">
+                  <label htmlFor="nextOfKin2Name" className="form-label">Jina la Mtu wa Karibu 2</label>
+                  <input
+                    type="text"
+                    id="nextOfKin2Name"
+                    name="nextOfKin2Name"
+                    value={formData.nextOfKin2Name}
+                    onChange={handleChange}
+                    placeholder="Mfano: Ali Mustafa"
+                    className="form-input"
+                    required
+                    autoComplete="off"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="nextOfKin2Phone" className="form-label">Namba ya Simu ya Mtu wa Karibu 2</label>
+                  <input
+                    type="tel"
+                    id="nextOfKin2Phone"
+                    name="nextOfKin2Phone"
+                    value={formData.nextOfKin2Phone}
+                    onChange={handleChange}
+                    placeholder="Mfano: 0755432109"
                     className="form-input"
                     required
                     autoComplete="off"
@@ -212,7 +254,7 @@ export default function Home() {
                 <button 
                   type="submit" 
                   className="btn btn-primary" 
-                  style={{ width: '100%', padding: '16px', marginTop: '16px', fontSize: '1.05rem' }}
+                  style={{ width: '100%', padding: '16px', marginTop: '24px', fontSize: '1.05rem' }}
                   disabled={loading}
                 >
                   {loading ? (

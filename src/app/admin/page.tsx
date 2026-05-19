@@ -8,8 +8,10 @@ interface Registration {
   firstName: string
   lastName: string
   phoneNumber: string
-  nextOfKinName: string
-  nextOfKinPhone: string
+  nextOfKin1Name: string
+  nextOfKin1Phone: string
+  nextOfKin2Name: string
+  nextOfKin2Phone: string
   createdAt: string
 }
 
@@ -84,8 +86,10 @@ export default function AdminDashboard() {
       r.firstName.toLowerCase().includes(search) ||
       r.lastName.toLowerCase().includes(search) ||
       r.phoneNumber.toLowerCase().includes(search) ||
-      r.nextOfKinName.toLowerCase().includes(search) ||
-      r.nextOfKinPhone.toLowerCase().includes(search)
+      r.nextOfKin1Name.toLowerCase().includes(search) ||
+      r.nextOfKin1Phone.toLowerCase().includes(search) ||
+      r.nextOfKin2Name.toLowerCase().includes(search) ||
+      r.nextOfKin2Phone.toLowerCase().includes(search)
     )
   })
 
@@ -151,7 +155,7 @@ export default function AdminDashboard() {
           <h1 className="text-gradient" style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '8px' }}>
             Kudhibiti Usajili
           </h1>
-          <p className="text-muted">Kagua, tafuta, na udhibiti orodha ya watu wote waliojisajili kwenye mfumo.</p>
+          <p className="text-muted">Kagua, tafuta, na udhibiti orodha ya watu wote waliojisajili wenye wasimamizi wawili kila mmoja.</p>
         </div>
 
         {/* Dashboard Stats Panel */}
@@ -182,7 +186,7 @@ export default function AdminDashboard() {
           <div className="search-input-wrapper">
             <input
               type="text"
-              placeholder="Tafuta kwa Jina, Namba ya simu au Mtu wa karibu..."
+              placeholder="Tafuta kwa Jina, Namba ya simu au Wasimamizi..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="search-input"
@@ -236,8 +240,8 @@ export default function AdminDashboard() {
                 <tr>
                   <th>Jina Kamili</th>
                   <th>Namba ya Simu</th>
-                  <th>Mtu wa Karibu</th>
-                  <th>Simu ya Msimamizi</th>
+                  <th>Mtu wa Karibu 1</th>
+                  <th>Mtu wa Karibu 2</th>
                   <th>Tarehe ya Usajili</th>
                   <th style={{ textAlign: 'right' }}>Vitendo</th>
                 </tr>
@@ -248,9 +252,17 @@ export default function AdminDashboard() {
                     <td style={{ fontWeight: 600 }}>{record.firstName} {record.lastName}</td>
                     <td>{record.phoneNumber}</td>
                     <td>
-                      <span className="badge badge-purple">{record.nextOfKinName}</span>
+                      <div>
+                        <span className="badge badge-purple" style={{ marginBottom: '4px' }}>{record.nextOfKin1Name}</span>
+                        <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>📞 {record.nextOfKin1Phone}</div>
+                      </div>
                     </td>
-                    <td>{record.nextOfKinPhone}</td>
+                    <td>
+                      <div>
+                        <span className="badge badge-green" style={{ marginBottom: '4px' }}>{record.nextOfKin2Name}</span>
+                        <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>📞 {record.nextOfKin2Phone}</div>
+                      </div>
+                    </td>
                     <td style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
                       {formatDate(record.createdAt)}
                     </td>
@@ -284,7 +296,7 @@ export default function AdminDashboard() {
         {/* View Details Modal Overlay */}
         {selectedRecord && (
           <div className="modal-overlay" onClick={() => setSelectedRecord(null)}>
-            <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '550px' }}>
+            <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '650px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
                 <h3 className="text-gradient" style={{ fontSize: '1.4rem', fontWeight: 800 }}>Taarifa za Msajiliwa</h3>
                 <button className="btn btn-secondary" onClick={() => setSelectedRecord(null)} style={{ padding: '6px 12px', borderRadius: '50%', minWidth: '36px', height: '36px' }}>×</button>
@@ -296,39 +308,73 @@ export default function AdminDashboard() {
                 </div>
                 <div>
                   <h4 style={{ fontSize: '1.2rem', fontWeight: 700 }}>{selectedRecord.firstName} {selectedRecord.lastName}</h4>
-                  <span className="badge badge-green" style={{ marginTop: '4px' }}>ID: {selectedRecord.id.slice(0, 8)}...</span>
+                  <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginTop: '4px' }}>
+                    <span className="badge badge-purple" style={{ fontSize: '0.7rem' }}>ID: {selectedRecord.id.slice(0, 8)}</span>
+                    <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>📞 {selectedRecord.phoneNumber}</span>
+                  </div>
                 </div>
               </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                <div>
-                  <span className="form-label" style={{ fontSize: '0.75rem' }}>Namba ya Simu</span>
-                  <div style={{ fontSize: '1.05rem', fontWeight: 500, marginTop: '4px' }}>📞 {selectedRecord.phoneNumber}</div>
+              {/* Side-by-Side Next of Kin Display Grid */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginTop: '16px' }}>
+                
+                {/* Kin 1 Card */}
+                <div style={{ background: 'hsl(240, 10%, 2%)', padding: '20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
+                  <h4 className="text-gradient" style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.05rem' }}>
+                    👤 Mtu wa Karibu 1
+                  </h4>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                    <div>
+                      <span className="form-label" style={{ fontSize: '0.7rem' }}>Jina la Msimamizi</span>
+                      <div style={{ fontSize: '1rem', fontWeight: 600, color: 'hsl(263, 70%, 75%)', marginTop: '2px' }}>
+                        {selectedRecord.nextOfKin1Name}
+                      </div>
+                    </div>
+                    <div>
+                      <span className="form-label" style={{ fontSize: '0.7rem' }}>Namba ya Simu</span>
+                      <div style={{ fontSize: '0.95rem', fontWeight: 500, marginTop: '2px' }}>
+                        📞 {selectedRecord.nextOfKin1Phone}
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <hr style={{ border: 'none', borderTop: '1px solid var(--border)' }} />
-
-                <div>
-                  <span className="form-label" style={{ fontSize: '0.75rem' }}>Msimamizi / Mtu wa Karibu</span>
-                  <div style={{ fontSize: '1.05rem', fontWeight: 600, marginTop: '4px', color: 'hsl(263, 70%, 75%)' }}>👤 {selectedRecord.nextOfKinName}</div>
+                {/* Kin 2 Card */}
+                <div style={{ background: 'hsl(240, 10%, 2%)', padding: '20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
+                  <h4 className="text-gradient-green" style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.05rem' }}>
+                    👤 Mtu wa Karibu 2
+                  </h4>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                    <div>
+                      <span className="form-label" style={{ fontSize: '0.7rem' }}>Jina la Msimamizi</span>
+                      <div style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--secondary)', marginTop: '2px' }}>
+                        {selectedRecord.nextOfKin2Name}
+                      </div>
+                    </div>
+                    <div>
+                      <span className="form-label" style={{ fontSize: '0.7rem' }}>Namba ya Simu</span>
+                      <div style={{ fontSize: '0.95rem', fontWeight: 500, marginTop: '2px' }}>
+                        📞 {selectedRecord.nextOfKin2Phone}
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <div>
-                  <span className="form-label" style={{ fontSize: '0.75rem' }}>Simu ya Mtu wa Karibu</span>
-                  <div style={{ fontSize: '1.05rem', fontWeight: 500, marginTop: '4px' }}>📞 {selectedRecord.nextOfKinPhone}</div>
-                </div>
-
-                <hr style={{ border: 'none', borderTop: '1px solid var(--border)' }} />
-
-                <div>
-                  <span className="form-label" style={{ fontSize: '0.75rem' }}>Tarehe ya Kujiandikisha</span>
-                  <div style={{ fontSize: '0.95rem', color: 'var(--text-muted)', marginTop: '4px' }}>📅 {formatDate(selectedRecord.createdAt)}</div>
-                </div>
               </div>
 
-              <button className="btn btn-primary" onClick={() => setSelectedRecord(null)} style={{ width: '100%', marginTop: '28px' }}>
-                Funga Dirisha
-              </button>
+              <hr style={{ border: 'none', borderTop: '1px solid var(--border)', margin: '24px 0' }} />
+
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div>
+                  <span className="form-label" style={{ fontSize: '0.7rem' }}>Tarehe ya Kujiandikisha</span>
+                  <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginTop: '2px' }}>
+                    📅 {formatDate(selectedRecord.createdAt)}
+                  </div>
+                </div>
+                <button className="btn btn-primary" onClick={() => setSelectedRecord(null)} style={{ padding: '12px 28px' }}>
+                  Funga Dirisha
+                </button>
+              </div>
             </div>
           </div>
         )}

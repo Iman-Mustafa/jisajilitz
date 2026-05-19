@@ -10,15 +10,17 @@ export async function GET(request: Request) {
 
     if (query.trim()) {
       const searchQuery = query.trim()
-      // Case-insensitive query against multiple fields in SQLite
+      // Case-insensitive query against multiple fields in SQLite (including both Next of Kins)
       registrations = await db.registration.findMany({
         where: {
           OR: [
             { firstName: { contains: searchQuery } },
             { lastName: { contains: searchQuery } },
             { phoneNumber: { contains: searchQuery } },
-            { nextOfKinName: { contains: searchQuery } },
-            { nextOfKinPhone: { contains: searchQuery } },
+            { nextOfKin1Name: { contains: searchQuery } },
+            { nextOfKin1Phone: { contains: searchQuery } },
+            { nextOfKin2Name: { contains: searchQuery } },
+            { nextOfKin2Phone: { contains: searchQuery } },
           ],
         },
         orderBy: {

@@ -17,7 +17,9 @@ model Registration {
   firstName      String
   lastName       String
   phoneNumber    String
-  nextOfKinName  String
-  nextOfKinPhone String
+  nextOfKin1Name  String
+  nextOfKin1Phone String
+  nextOfKin2Name  String
+  nextOfKin2Phone String
   createdAt      DateTime @default(now())
 }
