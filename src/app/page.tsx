@@ -68,8 +68,9 @@ export default function Home() {
       {/* Navigation Header */}
       <header className="nav-header">
         <div className="container nav-container">
-          <div className="logo">
-            <span style={{ fontSize: '1.8rem' }}>✦</span> Jisajili
+          <div className="logo" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <img src="/jisajili.svg" alt="THE PEACE Logo" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
+            <span style={{ fontSize: '1.5rem', fontWeight: 800, background: 'linear-gradient(135deg, #0f172a 0%, #0284c7 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>THE PEACE</span>
           </div>
           <Link href="/admin" className="btn btn-secondary" style={{ display: 'inline-flex', gap: '8px', alignItems: 'center' }}>
             Ingia 🔒

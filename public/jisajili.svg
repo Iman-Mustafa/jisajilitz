@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- Rounded Paper Card (Notepad Base) -->
+  <rect x="48" y="48" width="416" height="416" rx="80" fill="#ffffff" stroke="#0284c7" stroke-width="24" stroke-linejoin="round" />
+  
+  <!-- Blue vertical notebook margin line -->
+  <line x1="140" y1="48" x2="140" y2="464" stroke="#bae6fd" stroke-width="12" />
+  
+  <!-- Text/Writing Lines inside the Notepad -->
+  <line x1="180" y1="145" x2="400" y2="145" stroke="#cbd5e1" stroke-width="12" stroke-linecap="round" />
+  <line x1="180" y1="205" x2="400" y2="205" stroke="#cbd5e1" stroke-width="12" stroke-linecap="round" />
+  <line x1="180" y1="265" x2="350" y2="265" stroke="#cbd5e1" stroke-width="12" stroke-linecap="round" />
+  <line x1="180" y1="325" x2="400" y2="325" stroke="#cbd5e1" stroke-width="12" stroke-linecap="round" />
+  <line x1="180" y1="385" x2="300" y2="385" stroke="#cbd5e1" stroke-width="12" stroke-linecap="round" />
+
+  <!-- Pencil Component: Tilted from Top-Right to Bottom-Left (exactly like the sketch) -->
+  <g transform="translate(145, 55) rotate(-40)">
+    <!-- Pencil wood cone tip -->
+    <polygon points="40,300 80,240 0,240" fill="#fed7aa" stroke="#0284c7" stroke-width="16" stroke-linejoin="round" />
+    <!-- Pencil lead/graphite sharp tip -->
+    <polygon points="40,300 54,279 26,279" fill="#0f172a" stroke="#0f172a" stroke-width="4" stroke-linejoin="round" />
+    
+    <!-- Pencil Shaft Body -->
+    <rect x="0" y="40" width="80" height="200" fill="#e0f2fe" stroke="#0284c7" stroke-width="16" stroke-linejoin="round" />
+    <!-- Pencil body details (stripes) -->
+    <line x1="26" y1="40" x2="26" y2="240" stroke="#0284c7" stroke-width="12" />
+    <line x1="54" y1="40" x2="54" y2="240" stroke="#0284c7" stroke-width="12" />
+    
+    <!-- Ferrule (Metal Ring Band) -->
+    <rect x="-4" y="20" width="88" height="20" fill="#94a3b8" stroke="#0284c7" stroke-width="16" stroke-linejoin="round" />
+    
+    <!-- Pink Eraser -->
+    <path d="M 0,20 A 40,40 0 0,1 80,20 Z" transform="scale(1, -1) translate(0, -20)" fill="#fda4af" stroke="#0284c7" stroke-width="16" stroke-linejoin="round" />
+  </g>
+</svg>

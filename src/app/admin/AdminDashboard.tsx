@@ -134,8 +134,10 @@ export default function AdminDashboard() {
       {/* Admin Header */}
       <header className="nav-header">
         <div className="container nav-container">
-          <div className="logo" style={{ background: 'linear-gradient(135deg, white 0%, var(--danger) 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-            🛡️ Mfumo wa Admin
+          <div className="logo" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <img src="/jisajili.svg" alt="THE PEACE Logo" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
+            <span style={{ fontSize: '1.5rem', fontWeight: 800, background: 'linear-gradient(135deg, #0f172a 0%, #0284c7 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>THE PEACE</span>
+            <span className="badge badge-purple" style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Admin</span>
           </div>
           <div style={{ display: 'inline-flex', gap: '12px' }}>
             <Link href="/" className="btn btn-secondary">
@@ -323,8 +325,8 @@ export default function AdminDashboard() {
                 <button className="btn btn-secondary" onClick={() => setSelectedRecord(null)} style={{ padding: '6px 12px', borderRadius: '50%', minWidth: '36px', height: '36px' }}>×</button>
               </div>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '24px', background: 'hsl(240, 10%, 2%)', padding: '16px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
-                <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: 'var(--primary-glow)', border: '2px dashed var(--primary)', display: 'flex', alignItems: 'center', justifySelf: 'center', justifyContent: 'center', fontSize: '1.6rem', color: 'hsl(263, 70%, 75%)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '24px', background: '#f8fafc', padding: '16px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
+                <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: 'var(--primary-glow)', border: '2px dashed var(--primary)', display: 'flex', alignItems: 'center', justifySelf: 'center', justifyContent: 'center', fontSize: '1.6rem', color: 'var(--primary)' }}>
                   👤
                 </div>
                 <div>
@@ -340,14 +342,14 @@ export default function AdminDashboard() {
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginTop: '16px' }}>
                 
                 {/* Kin 1 Card */}
-                <div style={{ background: 'hsl(240, 10%, 2%)', padding: '20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
+                <div style={{ background: '#f8fafc', padding: '20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
                   <h4 className="text-gradient" style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.05rem' }}>
                     👤 Mtu wa Karibu 1
                   </h4>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                     <div>
                       <span className="form-label" style={{ fontSize: '0.7rem' }}>Jina la Msimamizi</span>
-                      <div style={{ fontSize: '1rem', fontWeight: 600, color: 'hsl(263, 70%, 75%)', marginTop: '2px' }}>
+                      <div style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--primary)', marginTop: '2px' }}>
                         {selectedRecord.nextOfKin1Name}
                       </div>
                     </div>
@@ -361,14 +363,14 @@ export default function AdminDashboard() {
                 </div>
 
                 {/* Kin 2 Card */}
-                <div style={{ background: 'hsl(240, 10%, 2%)', padding: '20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
+                <div style={{ background: '#f8fafc', padding: '20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
                   <h4 className="text-gradient-green" style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.05rem' }}>
                     👤 Mtu wa Karibu 2
                   </h4>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                     <div>
                       <span className="form-label" style={{ fontSize: '0.7rem' }}>Jina la Msimamizi</span>
-                      <div style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--secondary)', marginTop: '2px' }}>
+                      <div style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--primary)', marginTop: '2px' }}>
                         {selectedRecord.nextOfKin2Name}
                       </div>
                     </div>
