@@ -105,7 +105,7 @@ export default function Home() {
             <div className="card">
               <div style={{ marginBottom: '32px', textAlign: 'center' }}>
                 <h1 className="text-gradient" style={{ fontSize: '2.2rem', fontWeight: 800, marginBottom: '8px' }}>
-                  Fomu Ya Usajili
+                  THE PEACE
                 </h1>
                 <p className="text-muted">Jaza taarifa zako pamoja na watu wawili wa karibu (Next of Kin) hapa chini.</p>
               </div>
