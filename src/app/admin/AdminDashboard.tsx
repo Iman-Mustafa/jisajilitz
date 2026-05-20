@@ -131,15 +131,14 @@ export default function AdminDashboard() {
 
   return (
     <>
-      {/* Admin Header */}
       <header className="nav-header">
         <div className="container nav-container">
           <div className="logo" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <img src="/jisajili.svg" alt="THE PEACE Logo" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
-            <span style={{ fontSize: '1.5rem', fontWeight: 800, background: 'linear-gradient(135deg, #0f172a 0%, #0284c7 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>THE PEACE</span>
+            <span className="logo-text">THE PEACE</span>
             <span className="badge badge-purple" style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Admin</span>
           </div>
-          <div style={{ display: 'inline-flex', gap: '12px' }}>
+          <div className="header-actions">
             <Link href="/" className="btn btn-secondary">
               📝 Rudi Kwenye Fomu
             </Link>
@@ -151,7 +150,7 @@ export default function AdminDashboard() {
       </header>
 
       {/* Main Admin Workspace */}
-      <main className="container" style={{ padding: '40px 24px' }}>
+      <main className="container main-content">
         
         {/* Floating Toast Notification */}
         {toastMessage && (
@@ -339,7 +338,7 @@ export default function AdminDashboard() {
               </div>
 
               {/* Side-by-Side Next of Kin Display Grid */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginTop: '16px' }}>
+              <div className="info-grid-2" style={{ marginTop: '16px' }}>
                 
                 {/* Kin 1 Card */}
                 <div style={{ background: '#f8fafc', padding: '20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
@@ -387,7 +386,7 @@ export default function AdminDashboard() {
 
               <hr style={{ border: 'none', borderTop: '1px solid var(--border)', margin: '24px 0' }} />
 
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div className="modal-footer">
                 <div>
                   <span className="form-label" style={{ fontSize: '0.7rem' }}>Tarehe ya Kujiandikisha</span>
                   <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginTop: '2px' }}>

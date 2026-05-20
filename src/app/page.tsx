@@ -70,7 +70,7 @@ export default function Home() {
         <div className="container nav-container">
           <div className="logo" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <img src="/jisajili.svg" alt="THE PEACE Logo" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
-            <span style={{ fontSize: '1.5rem', fontWeight: 800, background: 'linear-gradient(135deg, #0f172a 0%, #0284c7 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>THE PEACE</span>
+            <span className="logo-text">THE PEACE</span>
           </div>
           <Link href="/admin" className="btn btn-secondary" style={{ display: 'inline-flex', gap: '8px', alignItems: 'center' }}>
             Ingia 🔒
@@ -79,7 +79,7 @@ export default function Home() {
       </header>
 
       {/* Main Form Area */}
-      <main className="container" style={{ padding: '60px 24px', display: 'flex', justifyContent: 'center' }}>
+      <main className="container main-content">
         <div style={{ width: '100%', maxWidth: '650px' }}>
           
           {success ? (
@@ -92,7 +92,7 @@ export default function Home() {
               <p className="text-muted" style={{ fontSize: '1.05rem', lineHeight: '1.6' }}>
                 Hongera sana! Taarifa zako na za wasimamizi wako wawili zimepokelewa na zimehifadhiwa salama kwenye database.
               </p>
-              <div style={{ marginTop: '16px', display: 'flex', gap: '12px' }}>
+              <div className="success-actions">
                 <button className="btn btn-primary" onClick={() => setSuccess(false)}>
                   Sajili Mwingine
                 </button>
@@ -104,11 +104,10 @@ export default function Home() {
           ) : (
             /* Registration Form */
             <div className="card">
-              <div style={{ marginBottom: '32px', textAlign: 'center' }}>
-                <h1 className="text-gradient" style={{ fontSize: '2.2rem', fontWeight: 800, marginBottom: '8px' }}>
-                  THE PEACE
-                </h1>
-                <p className="text-muted">Jaza taarifa zako pamoja na watu wawili wa karibu (Next of Kin) hapa chini.</p>
+              <div style={{ marginBottom: '24px', textAlign: 'center' }}>
+                <p className="text-muted" style={{ fontSize: '1.05rem', fontWeight: 500, lineHeight: '1.5' }}>
+                  Jaza taarifa zako pamoja na watu wawili wa karibu (Next of Kin) hapa chini.
+                </p>
               </div>
 
               {error && (
@@ -131,7 +130,7 @@ export default function Home() {
                   1. Taarifa Binafsi
                 </h3>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                <div className="form-grid">
                   <div className="form-group">
                     <label htmlFor="firstName" className="form-label">Jina la Kwanza</label>
                     <input

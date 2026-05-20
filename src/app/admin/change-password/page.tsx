@@ -396,6 +396,31 @@ export default function ChangePasswordPage() {
         @keyframes spin {
           to { transform: rotate(360deg); }
         }
+
+        @media (max-width: 480px) {
+          .login-container {
+            padding: 16px;
+          }
+          .login-dialog {
+            padding: 28px 20px;
+            border-radius: 16px;
+          }
+          .login-title {
+            font-size: 1.35rem;
+          }
+          .login-subtitle {
+            font-size: 0.82rem;
+            line-height: 1.5;
+          }
+          .login-input {
+            padding: 12px 14px;
+            font-size: 0.95rem;
+          }
+          .login-button {
+            padding: 12px;
+            font-size: 0.95rem;
+          }
+        }
       `}</style>
     </main>
   )
