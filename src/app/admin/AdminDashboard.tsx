@@ -193,9 +193,9 @@ export default function AdminDashboard() {
           <Link href="/" className="btn btn-secondary" style={{ width: '100%', justifyContent: 'center' }}>
             📝 Rudi Kwenye Fomu
           </Link>
-          <button onClick={handleLogout} className="btn btn-secondary" style={{ width: '100%', justifyContent: 'center', borderColor: 'rgba(239, 68, 68, 0.4)', color: 'hsl(346.8, 77.2%, 65%)' }}>
-            🚪 Ondoka (Logout)
-          </button>
+          <Link href="/admin/profile" className="btn btn-secondary" style={{ width: '100%', justifyContent: 'center' }}>
+            👤 Wasifu Wangu
+          </Link>
         </div>
       </aside>
 
