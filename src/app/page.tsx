@@ -92,14 +92,6 @@ export default function Home() {
               <p className="text-muted" style={{ fontSize: '1.05rem', lineHeight: '1.6' }}>
                 Hongera sana! Taarifa zako na za wasimamizi wako wawili zimepokelewa na zimehifadhiwa salama kwenye database.
               </p>
-              <div className="success-actions">
-                <button className="btn btn-primary" onClick={() => setSuccess(false)}>
-                  Sajili Mwingine
-                </button>
-                <Link href="/admin" className="btn btn-secondary">
-                  Ingia Kwenye Panel
-                </Link>
-              </div>
             </div>
           ) : (
             /* Registration Form */
