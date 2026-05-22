@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "THE PEACE - Jisajili",
   description: "Fomu salama ya usajili na wasimamizi wawili.",
   icons: {
-    icon: "/jisajili.svg",
+    icon: "/thepeace.jpg",
   },
 };
 
@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="sw" className={`${geistSans.variable} ${geistMono.variable}`}>
       <head>
-        <link rel="icon" href="/jisajili.svg" type="image/svg+xml" />
+        <link rel="icon" href="/thepeace.jpg" type="image/jpeg" />
       </head>
       <body>{children}</body>
     </html>

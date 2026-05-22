@@ -287,6 +287,34 @@ button, input {
   border: 1px solid #bae6fd;
 }
 
+/* Dashboard Side-by-Side Layout */
+.dashboard-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.dashboard-sidebar {
+  width: 100%;
+}
+
+.dashboard-main {
+  width: 100%;
+}
+
+@media (min-width: 992px) {
+  .dashboard-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    align-items: start;
+  }
+  
+  .dashboard-sidebar .stat-grid {
+    grid-template-columns: 1fr; /* Stack vertically on large screens */
+    margin-bottom: 0;
+  }
+}
+
 /* Dashboard Stat Cards */
 .stat-grid {
   display: grid;

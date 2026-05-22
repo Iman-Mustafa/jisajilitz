@@ -56,8 +56,8 @@ export default function Home() {
         nextOfKin2Name: '',
         nextOfKin2Phone: '',
       })
-    } catch (err: any) {
-      setError(err.message || 'Kashindwa kuwasiliana na server.')
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Kashindwa kuwasiliana na server.')
     } finally {
       setLoading(false)
     }
@@ -69,7 +69,7 @@ export default function Home() {
       <header className="nav-header">
         <div className="container nav-container">
           <div className="logo" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <img src="/jisajili.svg" alt="THE PEACE Logo" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
+            <img src="/thepeace.jpg" alt="THE PEACE Logo" style={{ width: '40px', height: '40px', objectFit: 'cover', borderRadius: '50%' }} />
             <span className="logo-text">THE PEACE</span>
           </div>
           <Link href="/admin" className="btn btn-secondary" style={{ display: 'inline-flex', gap: '8px', alignItems: 'center' }}>

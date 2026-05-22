@@ -37,8 +37,8 @@ export default function AdminDashboard() {
         throw new Error(data.error || 'Imeshindwa kupakia taarifa.')
       }
       setRegistrations(data.data || [])
-    } catch (err: any) {
-      setError(err.message || 'Kuna hitilafu imetokea wakati wa kupakia taarifa.')
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Kuna hitilafu imetokea wakati wa kupakia taarifa.')
     } finally {
       setLoading(false)
     }
@@ -87,8 +87,8 @@ export default function AdminDashboard() {
       setRegistrations((prev) => prev.filter((r) => r.id !== id))
       triggerToast('Usajili umefutwa kikamilifu!')
       setDeleteId(null)
-    } catch (err: any) {
-      alert(err.message || 'Hitilafu imetokea wakati wa kufuta.')
+    } catch (err: unknown) {
+      alert(err instanceof Error ? err.message : 'Hitilafu imetokea wakati wa kufuta.')
     } finally {
       setDeleteLoading(false)
     }
@@ -134,7 +134,7 @@ export default function AdminDashboard() {
       <header className="nav-header">
         <div className="container nav-container">
           <div className="logo" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <img src="/jisajili.svg" alt="THE PEACE Logo" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
+            <img src="/thepeace.jpg" alt="THE PEACE Logo" style={{ width: '40px', height: '40px', objectFit: 'cover', borderRadius: '50%' }} />
             <span className="logo-text">THE PEACE</span>
             <span className="badge badge-purple" style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Admin</span>
           </div>
@@ -180,8 +180,10 @@ export default function AdminDashboard() {
           <p className="text-muted">Kagua, tafuta, na udhibiti orodha ya watu wote waliojisajili wenye wasimamizi wawili kila mmoja.</p>
         </div>
 
-        {/* Dashboard Stats Panel */}
-        <div className="stat-grid">
+        <div className="dashboard-layout">
+          {/* Dashboard Stats Panel (Left Sidebar) */}
+          <div className="dashboard-sidebar">
+            <div className="stat-grid">
           <div className="stat-card">
             <span className="stat-title">Jumla ya Usajili</span>
             <span className="stat-value text-gradient">{totalRegistrations}</span>
@@ -199,12 +201,15 @@ export default function AdminDashboard() {
             <span className="stat-value" style={{ color: 'var(--secondary)', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '1.8rem' }}>
               Online <span style={{ width: '12px', height: '12px', background: 'var(--secondary)', borderRadius: '50%', display: 'inline-block', animation: 'blink 1.5s infinite' }}></span>
             </span>
-            <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>SQLite Connection Salama</div>
+              <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>SQLite Connection Salama</div>
+            </div>
           </div>
-        </div>
+          </div>
 
-        {/* Live Search and Control Toolbar */}
-        <div className="search-container">
+          {/* Table and Actions (Right Main Content) */}
+          <div className="dashboard-main">
+            {/* Live Search and Control Toolbar */}
+            <div className="search-container">
           <div className="search-input-wrapper">
             <input
               type="text"
@@ -314,6 +319,8 @@ export default function AdminDashboard() {
             </table>
           </div>
         )}
+        </div>
+        </div>
 
         {/* View Details Modal Overlay */}
         {selectedRecord && (
