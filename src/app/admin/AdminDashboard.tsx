@@ -130,196 +130,198 @@ export default function AdminDashboard() {
   }
 
   return (
-    <>
-      <header className="nav-header">
-        <div className="container nav-container">
+    <div className="admin-layout">
+      {/* Floating Toast Notification */}
+      {toastMessage && (
+        <div style={{
+          position: 'fixed',
+          top: '24px',
+          right: '24px',
+          background: 'hsl(142.1, 70.6%, 45.3%)',
+          color: 'white',
+          padding: '12px 24px',
+          borderRadius: 'var(--radius-md)',
+          boxShadow: '0 10px 25px rgba(34, 197, 94, 0.3)',
+          zIndex: 1100,
+          fontWeight: 600,
+          fontSize: '0.95rem',
+          animation: 'slideIn 0.3s ease-out'
+        }}>
+          ✅ {toastMessage}
+        </div>
+      )}
+
+      {/* Sidebar (Upande wa Kushoto) */}
+      <aside className="admin-sidebar">
+        {/* Top: Logo */}
+        <div className="sidebar-header">
           <div className="logo" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <img src="/thepeace.jpg" alt="THE PEACE Logo" style={{ width: '40px', height: '40px', objectFit: 'cover', borderRadius: '50%' }} />
-            <span className="logo-text">THE PEACE</span>
-            <span className="badge badge-purple" style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Admin</span>
-          </div>
-          <div className="header-actions">
-            <Link href="/" className="btn btn-secondary">
-              📝 Rudi Kwenye Fomu
-            </Link>
-            <button onClick={handleLogout} className="btn btn-secondary" style={{ borderColor: 'rgba(239, 68, 68, 0.4)', color: 'hsl(346.8, 77.2%, 65%)' }}>
-              🚪 Ondoka (Logout)
-            </button>
+            <img src="/thepeace.jpg" alt="THE PEACE Logo" style={{ width: '44px', height: '44px', objectFit: 'cover', borderRadius: '50%' }} />
+            <div>
+              <span className="logo-text" style={{ display: 'block', lineHeight: 1, fontSize: '1.2rem' }}>THE PEACE</span>
+              <span className="badge badge-purple" style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.05em', marginTop: '4px' }}>Admin Panel</span>
+            </div>
           </div>
         </div>
-      </header>
 
-      {/* Main Admin Workspace */}
-      <main className="container main-content">
-        
-        {/* Floating Toast Notification */}
-        {toastMessage && (
-          <div style={{
-            position: 'fixed',
-            top: '84px',
-            right: '24px',
-            background: 'hsl(142.1, 70.6%, 45.3%)',
-            color: 'white',
-            padding: '12px 24px',
-            borderRadius: 'var(--radius-md)',
-            boxShadow: '0 10px 25px rgba(34, 197, 94, 0.3)',
-            zIndex: 1100,
-            fontWeight: 600,
-            fontSize: '0.95rem',
-            animation: 'slideIn 0.3s ease-out'
-          }}>
-            ✅ {toastMessage}
+        {/* Middle: Stats */}
+        <div className="sidebar-content">
+          <div className="stat-grid">
+            <div className="stat-card">
+              <span className="stat-title">Jumla ya Usajili</span>
+              <span className="stat-value text-gradient">{totalRegistrations}</span>
+              <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Waliojiandikisha jumla</div>
+            </div>
+
+            <div className="stat-card">
+              <span className="stat-title">Usajili wa Leo</span>
+              <span className="stat-value text-gradient-green">{todayRegistrations}</span>
+              <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Masaa 24 yaliyopita</div>
+            </div>
+
+            <div className="stat-card">
+              <span className="stat-title">Hali ya Database</span>
+              <span className="stat-value" style={{ color: 'var(--secondary)', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '1.8rem' }}>
+                Online <span style={{ width: '12px', height: '12px', background: 'var(--secondary)', borderRadius: '50%', display: 'inline-block', animation: 'blink 1.5s infinite' }}></span>
+              </span>
+              <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Connection Salama</div>
+            </div>
           </div>
-        )}
+        </div>
 
+        {/* Bottom: Actions */}
+        <div className="sidebar-footer">
+          <Link href="/" className="btn btn-secondary" style={{ width: '100%', justifyContent: 'center' }}>
+            📝 Rudi Kwenye Fomu
+          </Link>
+          <button onClick={handleLogout} className="btn btn-secondary" style={{ width: '100%', justifyContent: 'center', borderColor: 'rgba(239, 68, 68, 0.4)', color: 'hsl(346.8, 77.2%, 65%)' }}>
+            🚪 Ondoka (Logout)
+          </button>
+        </div>
+      </aside>
+
+      {/* Main Content (Upande wa Kulia) */}
+      <main className="admin-main">
         {/* Header Title Section */}
-        <div style={{ marginBottom: '32px' }}>
+        <header className="main-header">
           <h1 className="text-gradient" style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '8px' }}>
             Kudhibiti Usajili
           </h1>
           <p className="text-muted">Kagua, tafuta, na udhibiti orodha ya watu wote waliojisajili wenye wasimamizi wawili kila mmoja.</p>
-        </div>
+        </header>
 
-        <div className="dashboard-layout">
-          {/* Dashboard Stats Panel (Left Sidebar) */}
-          <div className="dashboard-sidebar">
-            <div className="stat-grid">
-          <div className="stat-card">
-            <span className="stat-title">Jumla ya Usajili</span>
-            <span className="stat-value text-gradient">{totalRegistrations}</span>
-            <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Waliojiandikisha jumla</div>
-          </div>
-
-          <div className="stat-card">
-            <span className="stat-title">Usajili wa Leo</span>
-            <span className="stat-value text-gradient-green">{todayRegistrations}</span>
-            <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Masaa 24 yaliyopita</div>
-          </div>
-
-          <div className="stat-card">
-            <span className="stat-title">Hali ya Database</span>
-            <span className="stat-value" style={{ color: 'var(--secondary)', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '1.8rem' }}>
-              Online <span style={{ width: '12px', height: '12px', background: 'var(--secondary)', borderRadius: '50%', display: 'inline-block', animation: 'blink 1.5s infinite' }}></span>
-            </span>
-              <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>SQLite Connection Salama</div>
+        <div className="main-body">
+          {/* Live Search and Control Toolbar */}
+          <div className="search-container">
+            <div className="search-input-wrapper">
+              <input
+                type="text"
+                placeholder="Tafuta kwa Jina, Namba ya simu au Wasimamizi..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="search-input"
+              />
             </div>
-          </div>
-          </div>
-
-          {/* Table and Actions (Right Main Content) */}
-          <div className="dashboard-main">
-            {/* Live Search and Control Toolbar */}
-            <div className="search-container">
-          <div className="search-input-wrapper">
-            <input
-              type="text"
-              placeholder="Tafuta kwa Jina, Namba ya simu au Wasimamizi..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="search-input"
-            />
-          </div>
-          <button className="btn btn-secondary" onClick={() => window.print()} style={{ display: 'inline-flex', gap: '8px' }}>
-            🖨️ Print Orodha
-          </button>
-        </div>
-
-        {/* Data Loader */}
-        {loading ? (
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '64px', gap: '16px' }}>
-            <span style={{
-              display: 'inline-block',
-              width: '40px',
-              height: '40px',
-              border: '4px solid rgba(255,255,255,0.1)',
-              borderRadius: '50%',
-              borderTopColor: 'var(--primary)',
-              animation: 'spin 1s linear infinite'
-            }}></span>
-            <p className="text-muted">Inapakia orodha ya usajili kutoka kwenye database...</p>
-          </div>
-        ) : error ? (
-          <div className="card" style={{ borderColor: 'var(--danger)', padding: '24px', textAlign: 'center' }}>
-            <p style={{ color: 'var(--danger)', fontWeight: 600 }}>⚠️ {error}</p>
-            <button className="btn btn-secondary" onClick={fetchRegistrations} style={{ marginTop: '16px' }}>
-              Jaribu Kupakia Tena
+            <button className="btn btn-secondary" onClick={() => window.print()} style={{ display: 'inline-flex', gap: '8px' }}>
+              🖨️ Print Orodha
             </button>
           </div>
-        ) : filteredRegistrations.length === 0 ? (
-          /* Empty State */
-          <div className="card" style={{ textAlign: 'center', padding: '64px 32px' }}>
-            <span style={{ fontSize: '3rem', display: 'block', marginBottom: '16px' }}>📂</span>
-            <h3 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '8px' }}>Hakuna Usajili Unaopatikana</h3>
-            <p className="text-muted">
-              {searchQuery ? 'Hakuna matokeo yanayolingana na utafutaji wako.' : 'Bado hakuna mtu yeyote aliyejisajili kwenye mfumo.'}
-            </p>
-            {searchQuery && (
-              <button className="btn btn-secondary" onClick={() => setSearchQuery('')} style={{ marginTop: '16px' }}>
-                Futa Utafutaji
+
+          {/* Data Loader */}
+          {loading ? (
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '64px', gap: '16px' }}>
+              <span style={{
+                display: 'inline-block',
+                width: '40px',
+                height: '40px',
+                border: '4px solid rgba(255,255,255,0.1)',
+                borderRadius: '50%',
+                borderTopColor: 'var(--primary)',
+                animation: 'spin 1s linear infinite'
+              }}></span>
+              <p className="text-muted">Inapakia orodha ya usajili kutoka kwenye database...</p>
+            </div>
+          ) : error ? (
+            <div className="card" style={{ borderColor: 'var(--danger)', padding: '24px', textAlign: 'center' }}>
+              <p style={{ color: 'var(--danger)', fontWeight: 600 }}>⚠️ {error}</p>
+              <button className="btn btn-secondary" onClick={fetchRegistrations} style={{ marginTop: '16px' }}>
+                Jaribu Kupakia Tena
               </button>
-            )}
-          </div>
-        ) : (
-          /* Table Layout */
-          <div className="table-container">
-            <table className="custom-table">
-              <thead>
-                <tr>
-                  <th>Jina Kamili</th>
-                  <th>Namba ya Simu</th>
-                  <th>Mtu wa Karibu 1</th>
-                  <th>Mtu wa Karibu 2</th>
-                  <th>Tarehe ya Usajili</th>
-                  <th style={{ textAlign: 'right' }}>Vitendo</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredRegistrations.map((record) => (
-                  <tr key={record.id}>
-                    <td style={{ fontWeight: 600 }}>{record.firstName} {record.lastName}</td>
-                    <td>{record.phoneNumber}</td>
-                    <td>
-                      <div>
-                        <span className="badge badge-purple" style={{ marginBottom: '4px' }}>{record.nextOfKin1Name}</span>
-                        <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>📞 {record.nextOfKin1Phone}</div>
-                      </div>
-                    </td>
-                    <td>
-                      <div>
-                        <span className="badge badge-green" style={{ marginBottom: '4px' }}>{record.nextOfKin2Name}</span>
-                        <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>📞 {record.nextOfKin2Phone}</div>
-                      </div>
-                    </td>
-                    <td style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                      {formatDate(record.createdAt)}
-                    </td>
-                    <td style={{ textAlign: 'right' }}>
-                      <div style={{ display: 'inline-flex', gap: '8px' }}>
-                        <button 
-                          className="btn btn-secondary" 
-                          style={{ padding: '6px 12px', fontSize: '0.85rem' }} 
-                          onClick={() => setSelectedRecord(record)}
-                          title="Angalia Taarifa"
-                        >
-                          👁️ Kagua
-                        </button>
-                        <button 
-                          className="btn btn-secondary" 
-                          style={{ padding: '6px 12px', fontSize: '0.85rem', borderColor: 'rgba(239, 68, 68, 0.3)', color: 'hsl(346.8, 77.2%, 65%)' }}
-                          onClick={() => setDeleteId(record.id)}
-                          title="Futa Usajili"
-                        >
-                          🗑️ Futa
-                        </button>
-                      </div>
-                    </td>
+            </div>
+          ) : filteredRegistrations.length === 0 ? (
+            /* Empty State */
+            <div className="card" style={{ textAlign: 'center', padding: '64px 32px' }}>
+              <span style={{ fontSize: '3rem', display: 'block', marginBottom: '16px' }}>📂</span>
+              <h3 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '8px' }}>Hakuna Usajili Unaopatikana</h3>
+              <p className="text-muted">
+                {searchQuery ? 'Hakuna matokeo yanayolingana na utafutaji wako.' : 'Bado hakuna mtu yeyote aliyejisajili kwenye mfumo.'}
+              </p>
+              {searchQuery && (
+                <button className="btn btn-secondary" onClick={() => setSearchQuery('')} style={{ marginTop: '16px' }}>
+                  Futa Utafutaji
+                </button>
+              )}
+            </div>
+          ) : (
+            /* Table Layout */
+            <div className="table-container">
+              <table className="custom-table">
+                <thead>
+                  <tr>
+                    <th>Jina Kamili</th>
+                    <th>Namba ya Simu</th>
+                    <th>Mtu wa Karibu 1</th>
+                    <th>Mtu wa Karibu 2</th>
+                    <th>Tarehe ya Usajili</th>
+                    <th style={{ textAlign: 'right' }}>Vitendo</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-        </div>
+                </thead>
+                <tbody>
+                  {filteredRegistrations.map((record) => (
+                    <tr key={record.id}>
+                      <td style={{ fontWeight: 600 }}>{record.firstName} {record.lastName}</td>
+                      <td>{record.phoneNumber}</td>
+                      <td>
+                        <div>
+                          <span className="badge badge-purple" style={{ marginBottom: '4px' }}>{record.nextOfKin1Name}</span>
+                          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>📞 {record.nextOfKin1Phone}</div>
+                        </div>
+                      </td>
+                      <td>
+                        <div>
+                          <span className="badge badge-green" style={{ marginBottom: '4px' }}>{record.nextOfKin2Name}</span>
+                          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>📞 {record.nextOfKin2Phone}</div>
+                        </div>
+                      </td>
+                      <td style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+                        {formatDate(record.createdAt)}
+                      </td>
+                      <td style={{ textAlign: 'right' }}>
+                        <div style={{ display: 'inline-flex', gap: '8px' }}>
+                          <button 
+                            className="btn btn-secondary" 
+                            style={{ padding: '6px 12px', fontSize: '0.85rem' }} 
+                            onClick={() => setSelectedRecord(record)}
+                            title="Angalia Taarifa"
+                          >
+                            👁️ Kagua
+                          </button>
+                          <button 
+                            className="btn btn-secondary" 
+                            style={{ padding: '6px 12px', fontSize: '0.85rem', borderColor: 'rgba(239, 68, 68, 0.3)', color: 'hsl(346.8, 77.2%, 65%)' }}
+                            onClick={() => setDeleteId(record.id)}
+                            title="Futa Usajili"
+                          >
+                            🗑️ Futa
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
 
         {/* View Details Modal Overlay */}
@@ -444,6 +446,6 @@ export default function AdminDashboard() {
           50% { opacity: 1; }
         }
       `}</style>
-    </>
+    </div>
   )
 }
