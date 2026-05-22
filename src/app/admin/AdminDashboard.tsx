@@ -159,7 +159,6 @@ export default function AdminDashboard() {
             <img src="/thepeace.jpg" alt="THE PEACE Logo" style={{ width: '44px', height: '44px', objectFit: 'cover', borderRadius: '50%' }} />
             <div>
               <span className="logo-text" style={{ display: 'block', lineHeight: 1, fontSize: '1.2rem' }}>THE PEACE</span>
-              <span className="badge badge-purple" style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.05em', marginTop: '4px' }}>Admin Panel</span>
             </div>
           </div>
         </div>
@@ -283,13 +282,13 @@ export default function AdminDashboard() {
                       <td>{record.phoneNumber}</td>
                       <td>
                         <div>
-                          <span className="badge badge-purple" style={{ marginBottom: '4px' }}>{record.nextOfKin1Name}</span>
+                          <div style={{ fontWeight: 600, color: 'var(--primary)', marginBottom: '4px' }}>{record.nextOfKin1Name}</div>
                           <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>📞 {record.nextOfKin1Phone}</div>
                         </div>
                       </td>
                       <td>
                         <div>
-                          <span className="badge badge-green" style={{ marginBottom: '4px' }}>{record.nextOfKin2Name}</span>
+                          <div style={{ fontWeight: 600, color: '#16a34a', marginBottom: '4px' }}>{record.nextOfKin2Name}</div>
                           <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>📞 {record.nextOfKin2Phone}</div>
                         </div>
                       </td>

@@ -311,6 +311,9 @@ button, input {
 
 .sidebar-content {
   flex-grow: 1;
+  overflow-y: auto;
+  min-height: 0;
+  padding-right: 8px; /* For scrollbar */
 }
 
 .sidebar-footer {
@@ -353,7 +356,7 @@ button, input {
     min-width: 280px;
     border-bottom: none;
     border-right: 1px solid var(--border);
-    overflow-y: auto;
+    /* Removed overflow-y: auto so header/footer stay fixed */
   }
 
   .admin-main {
